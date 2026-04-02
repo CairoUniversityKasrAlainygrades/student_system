@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Student's System</title>
+<style>
+*{box-sizing:border-box;font-family:Arial, Helvetica, sans-serif}
+body{margin:0;background:#f2f2f2}
+
+/* Top bar */
+.topbar{
+background:#1e6bb8;
+color:white;
+padding:12px 20px;
+font-weight:600;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.top-left{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.top-logo{
+width:28px;
+height:28px;
+}
+
+.top-right{
+display:flex;
+align-items:center;
+gap:18px;
+font-weight:500;
+}
+
+.icon{
+width:18px;
+height:18px;
+opacity:0.95;
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.container{padding:30px}
+
+/* Login */
+#loginPage{
+display:flex;
+height:100vh;
+align-items:center;
+justify-content:center;
+}
+
+.login-card{
+background:white;
+padding:30px;
+width:420px;
+border-radius:8px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.logo{
+width:80px;
+display:block;
+margin:0 auto 10px auto;
+}
+
+.login-card h2{margin:10px 0 25px}
+
+.input{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:1px solid #ddd;
+border-radius:4px;
+}
+
+.btn{
+background:#1e6bb8;
+color:white;
+border:none;
+padding:12px;
+width:100%;
+border-radius:4px;
+cursor:pointer;
+margin-top:10px;
+font-weight:600;
+}
+
+/* Dashboard */
+#dashboardPage{display:none}
+.menu{
+max-width:900px;
+margin:40px auto;
+}
+
+.menu-item{
+background:white;
+padding:18px;
+margin:12px 0;
+border-radius:6px;
+border:1px solid #ddd;
+cursor:pointer;
+}
+
+.menu-item:hover{background:#f5f9ff}
+
+/* Score page */
+#scorePage{display:none}
+.card{
+background:white;
+padding:20px;
+border-radius:6px;
+border:1px solid #ddd;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:12px;
+text-align:left;
+}
+
+th{
+background:#f4f6f9;
+}
+
+.center{ text-align:center }
+.back{
+margin-top:20px;
+padding:10px 16px;
+background:#1e6bb8;
+color:white;
+border:none;
+border-radius:4px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage">
+<div class="login-card">
+<img class="logo" src="http://smis.medicine.cu.edu.eg:5555/ords/r/fctstu/123468/files/static/v32/icons/app-icon-512.png">
+<h2>Student's System</h2>
+<input class="input" id="username" placeholder="Username">
+<input class="input" id="password" type="password" placeholder="Password">
+<button class="btn" onclick="login()">Sign In</button>
+</div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboardPage">
+<div class="topbar">
+<div class="top-left">
+<img class="top-logo" src="http://smis.medicine.cu.edu.eg:5555/ords/r/fctstu/123468/files/static/v32/icons/app-icon-512.png">
+<div>Students</div>
+</div>
+
+<div class="top-right">
+<svg class="icon" viewBox="0 0 24 24" fill="white"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z"/></svg>
+<svg class="icon" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 19H11V17H13V19ZM15.07 11.25L14.17 12.17C13.45 12.9 13 13.5 13 15H11V14.5C11 13.4 11.45 12.4 12.17 11.67L13.41 10.41C13.78 10.05 14 9.55 14 9C14 7.9 13.1 7 12 7C10.9 7 10 7.9 10 9H8C8 6.79 9.79 5 12 5C14.21 5 16 6.79 16 9C16 9.88 15.64 10.68 15.07 11.25Z"/></svg>
+<div class="profile">
+<svg class="icon" viewBox="0 0 24 24" fill="white"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/></svg>
+20253154
+</div>
+</div>
+</div>
+
+<div class="menu">
+<div class="menu-item">Personal Data</div>
+<div class="menu-item">Attend report</div>
+<div class="menu-item">Schedule</div>
+<div class="menu-item" onclick="openScore()">Score</div>
+<div class="menu-item">Request</div>
+<div class="menu-item">Exam Time</div>
+<div class="menu-item">library</div>
+<div class="menu-item">moodle</div>
+</div>
+</div>
+
+<!-- SCORE PAGE -->
+<div id="scorePage">
+<div class="topbar">
+<div class="top-left">
+<img class="top-logo" src="http://smis.medicine.cu.edu.eg:5555/ords/r/fctstu/123468/files/static/v32/icons/app-icon-512.png">
+<div>Students</div>
+</div>
+
+<div class="top-right">
+<svg class="icon" viewBox="0 0 24 24" fill="white"><path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2Z"/></svg>
+<svg class="icon" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 19H11V17H13V19ZM15.07 11.25L14.17 12.17C13.45 12.9 13 13.5 13 15H11V14.5C11 13.4 11.45 12.4 12.17 11.67L13.41 10.41C13.78 10.05 14 9.55 14 9C14 7.9 13.1 7 12 7C10.9 7 10 7.9 10 9H8C8 6.79 9.79 5 12 5C14.21 5 16 6.79 16 9C16 9.88 15.64 10.68 15.07 11.25Z"/></svg>
+<div class="profile">
+<svg class="icon" viewBox="0 0 24 24" fill="white"><path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z"/></svg>
+20253154
+</div>
+</div>
+</div>
+
+<div class="container">
+<div class="card">
+<h3 class="center">Student No: 20253154</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Score</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ISK101 (240)</td>
+<td>238</td>
+<td>ممتاز</td>
+</tr>
+<tr>
+<td>INT 102 (210)</td>
+<td>200</td>
+<td>ممتاز</td>
+</tr>
+<tr>
+<td>BMS 103 (300)</td>
+<td>293</td>
+<td>ممتاز</td>
+</tr>
+</tbody>
+</table>
+<button class="back" onclick="backToMenu()">Back</button>
+</div>
+</div>
+</div>
+
+<script>
+function login(){
+var u=document.getElementById('username').value;
+var p=document.getElementById('password').value;
+if(u && p){
+document.getElementById('loginPage').style.display='none';
+document.getElementById('dashboardPage').style.display='block';
+}
+}
+function openScore(){
+document.getElementById('dashboardPage').style.display='none';
+document.getElementById('scorePage').style.display='block';
+}
+function backToMenu(){
+document.getElementById('scorePage').style.display='none';
+document.getElementById('dashboardPage').style.display='block';
+}
+</script>
+
+</body>
+</html>
